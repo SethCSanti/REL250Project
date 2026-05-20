@@ -148,11 +148,11 @@ Every time you edit files, click the **refresh icon** on `chrome://extensions` n
 ## Roadmap
 
 - [x] Project scaffolding & README
-- [ ] `manifest.json` setup (Manifest V3)
+- [x] `manifest.json` setup (Manifest V3)
 - [ ] Hover sidebar UI (inject into any page)
-- [ ] Emotion picker component
-- [ ] Scripture & quote JSON data (initial set, ~10 per emotion)
-- [ ] Matching logic (`utils/matcher.js`)
+- [x] Emotion picker component
+- [x] Scripture & quote JSON data (initial set, ~10 per emotion)
+- [x] Matching logic (`utils/matcher.js`)
 - [ ] Favorites / save feature
 - [ ] Settings panel (font size, theme, daily reminder toggle)
 - [ ] Firefox compatibility pass
