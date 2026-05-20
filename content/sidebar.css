@@ -40,6 +40,7 @@
   transform: translateY(-50%);
   z-index: 2147483647;
   display: flex;
+  flex-direction: row-reverse;
   align-items: stretch;
   pointer-events: none;
 }
@@ -66,17 +67,7 @@
 }
 
 #ssv-tab-icon {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  font-weight: 300;
-  letter-spacing: 0.18em;
-  color: var(--ssv-cream);
-  opacity: 0.9;
-  text-transform: uppercase;
-  user-select: none;
-  transform: rotate(180deg);
+  display: none;
 }
 
 /* ── Panel ── */
@@ -92,7 +83,7 @@
   overflow: hidden;
 
   /* Hidden by default — slides in from the right */
-  transform: translateX(calc(var(--ssv-panel-w) + 10px));
+  transform: translateX(calc(var(--ssv-panel-w) + var(--ssv-tab-w) + 10px));
   opacity: 0;
   transition: transform var(--ssv-transition), opacity 0.3s ease;
 }
