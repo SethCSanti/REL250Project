@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Still Small Voice</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="popup-header">
+    <div id="popup-header-inner">
+      <div id="popup-logo">
+        <img src="../assets/icons/icon48.png" alt="Still Small Voice" id="popup-icon" />
+        <div>
+          <div id="popup-title">Still Small Voice</div>
+          <div id="popup-subtitle">Your saved verses &amp; quotes</div>
+        </div>
+      </div>
+    </div>
+    <div class="popup-divider"></div>
+  </header>
+
+  <!-- Tab bar -->
+  <nav id="popup-tabs">
+    <button class="popup-tab active" data-tab="saved">
+      <span class="tab-icon">★</span> Saved
+    </button>
+    <button class="popup-tab" data-tab="about">
+      <span class="tab-icon">🕊️</span> About
+    </button>
+  </nav>
+
+  <!-- Saved tab -->
+  <section id="tab-saved" class="popup-tab-content active">
+
+    <!-- Empty state -->
+    <div id="saved-empty" style="display:none;">
+      <div id="saved-empty-icon">☆</div>
+      <div id="saved-empty-title">Nothing saved yet</div>
+      <div id="saved-empty-text">
+        When a verse or quote speaks to you, tap <strong>Save</strong> in the sidebar and it will appear here.
+      </div>
+    </div>
+
+    <!-- Cards list -->
+    <div id="saved-list"></div>
+
+    <!-- Clear all -->
+    <div id="saved-footer" style="display:none;">
+      <button id="clear-all-btn">Clear all saved</button>
+    </div>
+
+  </section>
+
+  <!-- About tab -->
+  <section id="tab-about" class="popup-tab-content">
+    <div id="about-content">
+
+      <div class="about-block">
+        <div class="about-block-title">What is this?</div>
+        <div class="about-block-text">
+          Still Small Voice is a gentle browser companion for students and anyone who works at a computer. Hover the gold tab on any page, share how you're feeling, and receive a verse or quote matched to that moment.
+        </div>
+      </div>
+
+      <div class="popup-divider"></div>
+
+      <div class="about-block">
+        <div class="about-block-title">Sources</div>
+        <div class="about-sources">
+          <div class="about-source-tag">Old Testament</div>
+          <div class="about-source-tag">New Testament</div>
+          <div class="about-source-tag">Book of Mormon</div>
+          <div class="about-source-tag">Doctrine &amp; Covenants</div>
+          <div class="about-source-tag">Pearl of Great Price</div>
+          <div class="about-source-tag">General Conference</div>
+          <div class="about-source-tag">BYU Devotionals</div>
+        </div>
+      </div>
+
+      <div class="popup-divider"></div>
+
+      <div class="about-block">
+        <div class="about-block-title">How to use</div>
+        <div class="about-block-text">
+          Hover the gold sliver on the right edge of any page to open the sidebar. Choose your emotion and a verse or quote will appear. Hit <em>Another</em> for a different one, or <em>Save</em> to keep it here.
+        </div>
+      </div>
+
+      <div class="popup-divider"></div>
+
+      <div id="about-scripture">
+        <div id="about-scripture-text">"Be still, and know that I am God."</div>
+        <div id="about-scripture-ref">— Psalm 46:10</div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>

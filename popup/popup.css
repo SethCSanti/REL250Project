@@ -1,0 +1,390 @@
+/* ============================================
+   Still Small Voice — popup.css
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400;700&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream:        #faf6f0;
+  --parchment:    #f0e9dc;
+  --parchment-2:  #e8dece;
+  --gold:         #b8976a;
+  --gold-light:   #d4b896;
+  --brown:        #5c3d1e;
+  --brown-dark:   #3a2410;
+  --text:         #2e1f0e;
+  --text-light:   #7a5c3a;
+  --shadow:       rgba(58, 36, 16, 0.12);
+}
+
+html, body {
+  width: 360px;
+  min-height: 200px;
+  max-height: 560px;
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Lato', sans-serif;
+  overflow: hidden;
+}
+
+/* ── Header ── */
+#popup-header {
+  background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown) 100%);
+  padding: 14px 16px 0;
+}
+
+#popup-header-inner {
+  padding-bottom: 12px;
+}
+
+#popup-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#popup-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+#popup-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream);
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+}
+
+#popup-subtitle {
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-top: 2px;
+}
+
+/* ── Divider ── */
+.popup-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 12px 0;
+}
+
+/* ── Tab Bar ── */
+#popup-tabs {
+  display: flex;
+  background: var(--brown-dark);
+  border-bottom: 1px solid rgba(184, 151, 106, 0.2);
+}
+
+.popup-tab {
+  flex: 1;
+  padding: 9px 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  opacity: 0.55;
+  transition: opacity 0.2s, border-bottom 0.2s;
+  border-bottom: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.popup-tab.active {
+  opacity: 1;
+  border-bottom: 2px solid var(--gold);
+  color: var(--gold-light);
+}
+
+.tab-icon {
+  font-size: 13px;
+}
+
+/* ── Tab Content ── */
+.popup-tab-content {
+  display: none;
+  overflow-y: auto;
+  max-height: 420px;
+}
+
+.popup-tab-content.active {
+  display: block;
+}
+
+.popup-tab-content::-webkit-scrollbar {
+  width: 4px;
+}
+.popup-tab-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.popup-tab-content::-webkit-scrollbar-thumb {
+  background: var(--gold-light);
+  border-radius: 2px;
+}
+
+/* ── Saved Tab ── */
+
+/* Empty state */
+#saved-empty {
+  text-align: center;
+  padding: 36px 24px;
+}
+
+#saved-empty-icon {
+  font-size: 32px;
+  color: var(--gold-light);
+  opacity: 0.4;
+  margin-bottom: 12px;
+}
+
+#saved-empty-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+#saved-empty-text {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+#saved-empty-text strong {
+  font-weight: 700;
+  color: var(--brown);
+}
+
+/* Cards list */
+#saved-list {
+  padding: 12px 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Individual saved card */
+.saved-card {
+  background: var(--parchment);
+  border: 1px solid #e0d5c3;
+  border-radius: 10px;
+  padding: 14px 14px 12px;
+  position: relative;
+  animation: card-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Decorative quote mark */
+.saved-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.saved-card-badge {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.saved-card-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gold-light);
+  font-size: 13px;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+.saved-card-remove:hover {
+  opacity: 1;
+}
+
+.saved-card-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text);
+  padding-top: 4px;
+}
+
+.saved-card-attribution {
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px solid #d9ccb8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.saved-card-reference {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--brown);
+  letter-spacing: 0.03em;
+  flex: 1;
+}
+
+.saved-card-tag {
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  background: var(--parchment-2);
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Emotion tag on card */
+.saved-card-emotion {
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+/* Footer / clear all */
+#saved-footer {
+  padding: 14px 14px 16px;
+  text-align: center;
+}
+
+#clear-all-btn {
+  background: none;
+  border: 1px solid #d9ccb8;
+  border-radius: 6px;
+  padding: 7px 18px;
+  font-family: 'Lato', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+#clear-all-btn:hover {
+  background: #f5ece0;
+  border-color: var(--gold-light);
+  color: var(--brown);
+}
+
+/* ── About Tab ── */
+#about-content {
+  padding: 16px 16px 20px;
+}
+
+.about-block {
+  margin-bottom: 4px;
+}
+
+.about-block-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 7px;
+}
+
+.about-block-text {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.about-block-text em {
+  font-style: italic;
+  color: var(--brown);
+}
+
+/* Source tags */
+.about-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.about-source-tag {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brown);
+  background: var(--parchment);
+  border: 1px solid #e0d5c3;
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+/* Closing scripture */
+#about-scripture {
+  text-align: center;
+  padding: 8px 10px 4px;
+}
+
+#about-scripture-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+#about-scripture-ref {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-top: 5px;
+}
