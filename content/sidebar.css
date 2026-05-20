@@ -1,0 +1,410 @@
+/* ============================================
+   Still Small Voice — sidebar.css
+   Injected into every page via content_scripts
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  --ssv-cream:        #faf6f0;
+  --ssv-parchment:    #f0e9dc;
+  --ssv-gold:         #b8976a;
+  --ssv-gold-light:   #d4b896;
+  --ssv-brown:        #5c3d1e;
+  --ssv-brown-dark:   #3a2410;
+  --ssv-text:         #2e1f0e;
+  --ssv-text-light:   #7a5c3a;
+  --ssv-shadow:       rgba(58, 36, 16, 0.18);
+  --ssv-radius:       14px;
+  --ssv-tab-w:        28px;
+  --ssv-panel-w:      320px;
+  --ssv-transition:   0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Reset scope — everything prefixed to avoid collision ── */
+#ssv-root *,
+#ssv-root *::before,
+#ssv-root *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+/* ── Root wrapper ── */
+#ssv-root {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 2147483647;
+  display: flex;
+  align-items: stretch;
+  pointer-events: none;
+}
+
+/* ── Tab (the always-visible sliver) ── */
+#ssv-tab {
+  pointer-events: all;
+  width: var(--ssv-tab-w);
+  min-height: 80px;
+  background: linear-gradient(160deg, var(--ssv-gold) 0%, var(--ssv-brown) 100%);
+  border-radius: var(--ssv-radius) 0 0 var(--ssv-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: -3px 0 18px var(--ssv-shadow);
+  transition: width 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+
+#ssv-tab:hover {
+  width: 34px;
+  background: linear-gradient(160deg, var(--ssv-gold-light) 0%, var(--ssv-brown) 100%);
+}
+
+#ssv-tab-icon {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: var(--ssv-cream);
+  opacity: 0.9;
+  text-transform: uppercase;
+  user-select: none;
+  transform: rotate(180deg);
+}
+
+/* ── Panel ── */
+#ssv-panel {
+  pointer-events: all;
+  width: var(--ssv-panel-w);
+  max-height: 90vh;
+  background: var(--ssv-cream);
+  border-radius: var(--ssv-radius) 0 0 var(--ssv-radius);
+  box-shadow: -6px 0 40px var(--ssv-shadow), -1px 0 0 var(--ssv-parchment);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  /* Hidden by default — slides in from the right */
+  transform: translateX(calc(var(--ssv-panel-w) + 10px));
+  opacity: 0;
+  transition: transform var(--ssv-transition), opacity 0.3s ease;
+}
+
+#ssv-root.ssv-open #ssv-panel {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* ── Panel Header ── */
+#ssv-header {
+  background: linear-gradient(135deg, var(--ssv-brown-dark) 0%, var(--ssv-brown) 100%);
+  padding: 18px 20px 14px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+#ssv-header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ssv-cream);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+#ssv-header-subtitle {
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ssv-gold-light);
+  margin-top: 3px;
+}
+
+#ssv-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--ssv-gold-light);
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  line-height: 1;
+  padding: 4px;
+}
+
+#ssv-close:hover {
+  opacity: 1;
+}
+
+/* ── Divider line ── */
+.ssv-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ssv-gold), transparent);
+  margin: 0 20px;
+  flex-shrink: 0;
+}
+
+/* ── Emotion Picker ── */
+#ssv-emotion-section {
+  padding: 16px 20px 12px;
+  flex-shrink: 0;
+}
+
+#ssv-emotion-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ssv-text-light);
+  margin-bottom: 12px;
+}
+
+#ssv-emotions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7px;
+}
+
+.ssv-emotion-btn {
+  background: var(--ssv-parchment);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  text-align: left;
+}
+
+.ssv-emotion-btn:hover {
+  background: #ede4d5;
+  border-color: var(--ssv-gold-light);
+  transform: translateY(-1px);
+}
+
+.ssv-emotion-btn.ssv-selected {
+  background: linear-gradient(135deg, #ede0c8, #e4d4b8);
+  border-color: var(--ssv-gold);
+}
+
+.ssv-emotion-emoji {
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ssv-emotion-label-text {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ssv-text);
+  letter-spacing: 0.01em;
+}
+
+/* ── Content Area ── */
+#ssv-content-section {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#ssv-content-section::-webkit-scrollbar {
+  width: 4px;
+}
+#ssv-content-section::-webkit-scrollbar-track {
+  background: transparent;
+}
+#ssv-content-section::-webkit-scrollbar-thumb {
+  background: var(--ssv-gold-light);
+  border-radius: 2px;
+}
+
+/* ── Content Card ── */
+#ssv-card {
+  background: var(--ssv-parchment);
+  border: 1px solid #e0d5c3;
+  border-radius: 10px;
+  padding: 18px;
+  position: relative;
+  animation: ssv-card-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ssv-card-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Decorative quote mark */
+#ssv-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 8px;
+  left: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  line-height: 1;
+  color: var(--ssv-gold);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+#ssv-card-type-badge {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ssv-gold);
+  margin-bottom: 10px;
+  display: block;
+}
+
+#ssv-card-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--ssv-text);
+  padding-top: 8px;
+}
+
+#ssv-card-attribution {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #d9ccb8;
+}
+
+#ssv-card-reference {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ssv-brown);
+  letter-spacing: 0.04em;
+}
+
+#ssv-card-source-tag {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ssv-text-light);
+  background: #e8dece;
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+
+/* ── Action Buttons ── */
+#ssv-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.ssv-action-btn {
+  flex: 1;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--ssv-gold-light);
+  background: transparent;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--ssv-brown);
+  transition: background 0.2s, transform 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.ssv-action-btn:hover {
+  background: var(--ssv-parchment);
+  transform: translateY(-1px);
+}
+
+.ssv-action-btn.ssv-favorited {
+  background: linear-gradient(135deg, #ede0c8, #e4d4b8);
+  border-color: var(--ssv-gold);
+  color: var(--ssv-brown-dark);
+}
+
+/* ── Placeholder / Empty State ── */
+#ssv-placeholder {
+  text-align: center;
+  padding: 24px 10px;
+  color: var(--ssv-text-light);
+}
+
+#ssv-placeholder-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+#ssv-placeholder-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--ssv-text-light);
+}
+
+/* ── Loading State ── */
+#ssv-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 20px;
+  color: var(--ssv-text-light);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.ssv-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--ssv-gold);
+  border-radius: 50%;
+  animation: ssv-pulse 1.2s ease-in-out infinite;
+}
+.ssv-dot:nth-child(2) { animation-delay: 0.2s; }
+.ssv-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes ssv-pulse {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40%           { opacity: 1;   transform: scale(1.1); }
+}
+
+/* ── Footer ── */
+#ssv-footer {
+  padding: 10px 20px 14px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+#ssv-footer-text {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ssv-gold-light);
+  opacity: 0.7;
+}
