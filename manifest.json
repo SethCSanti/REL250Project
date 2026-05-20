@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Still Small Voice",
+  "version": "1.0.0",
+  "description": "Hover to reveal a calming sidebar. Share how you're feeling and receive a scripture or quote from LDS sources matched to your emotion.",
+
+  "icons": {
+    "16":  "assets/icons/icon16.png",
+    "48":  "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16":  "assets/icons/icon16.png",
+      "48":  "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    },
+    "default_title": "Still Small Voice"
+  },
+
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js":  ["content/sidebar.js"],
+      "css": ["content/sidebar.css"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "data/scriptures.json",
+        "data/quotes.json",
+        "assets/icons/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+  }
+}
