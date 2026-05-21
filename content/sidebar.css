@@ -3,8 +3,6 @@
    Injected into every page via content_scripts
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap');
-
 /* ── CSS Variables ── */
 :root {
   --ssv-cream:        #faf6f0;
@@ -29,7 +27,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 /* ── Root wrapper ── */
@@ -102,7 +100,7 @@
 }
 
 #ssv-header-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
   font-size: 20px;
   font-weight: 300;
   font-style: italic;
@@ -247,7 +245,7 @@
   position: absolute;
   top: 8px;
   left: 14px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
   font-size: 52px;
   line-height: 1;
   color: var(--ssv-gold);
@@ -266,7 +264,7 @@
 }
 
 #ssv-card-text {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
   font-size: 16px;
   font-weight: 300;
   font-style: italic;
@@ -350,7 +348,7 @@
 }
 
 #ssv-placeholder-text {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
   font-size: 14px;
   font-style: italic;
   font-weight: 300;
