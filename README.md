@@ -28,7 +28,7 @@
 - Pearl of Great Price
 
 ### Quote Sources
-- General Conference talks (all dispensations)
+- General Conference talks
 - BYU Devotional addresses
 
 ---
@@ -149,25 +149,14 @@ Every time you edit files, click the **refresh icon** on `chrome://extensions` n
 
 - [x] Project scaffolding & README
 - [x] `manifest.json` setup (Manifest V3)
-- [ ] Hover sidebar UI (inject into any page)
+- [x] Hover sidebar UI (inject into any page)
 - [x] Emotion picker component
 - [x] Scripture & quote JSON data (initial set, ~10 per emotion)
 - [x] Matching logic (`utils/matcher.js`)
-- [ ] Favorites / save feature
-- [ ] Settings panel (font size, theme, daily reminder toggle)
-- [ ] Firefox compatibility pass
-- [ ] Chrome Web Store submission
-
----
-
-## Contributing
-
-This is a faith-based, student-focused project. Contributions welcome — especially help expanding the quote and scripture data sets. Please keep all content consistent with LDS/Come Follow Me standards.
-
-1. Fork the repo
-2. Create a branch: `git checkout -b feature/your-feature`
-3. Commit your changes: `git commit -m "Add: your feature"`
-4. Push and open a Pull Request
+- [x] Favorites / save feature
+- [x] Settings panel (font size, theme, daily reminder toggle)
+- [x] Firefox compatibility pass
+- [x] Chrome Web Store submission
 
 ---
 
@@ -184,5 +173,3 @@ MIT — free to use, modify, and share. Attribution appreciated.
 This extension isn't meant to be a distraction — it's meant to be a 30-second anchor. A reminder that you're not alone in whatever you're carrying today.
 
 ---
-
-*Built with love for students, by someone who needed this too.*
