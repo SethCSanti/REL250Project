@@ -1,4 +1,4 @@
-# 🕊️ Still Small Voice — Emotion-Based Scripture & Quote Extension
+# Still Small Voice — Emotion-Based Scripture & Quote Extension
 
 > A browser extension for students and busy people that offers a moment of peace — a scripture or inspired quote tailored to how you're feeling right now.
 
@@ -9,16 +9,16 @@
 **Still Small Voice** lives quietly on the edge of your browser. When life gets overwhelming, you hover over the tab, tell it how you're feeling, and it responds with a verse or quote from LDS scripture and General Conference — just for that moment.
 
 ### Supported Emotions
-- 😰 Anxious
-- 😴 Exhausted
-- 😵‍💫 Distracted
-- 😊 Happy
-- 🌅 Hopeful
-- 😢 Sad
-- 😤 Frustrated
-- 😶 Numb / Empty
-- 😓 Overwhelmed
-- 🙏 Grateful
+- Anxious
+- Exhausted
+- Distracted
+- Happy
+- Hopeful
+- Sad
+- Frustrated
+- Numb / Empty
+- Overwhelmed
+- Grateful
 
 ### Scripture Sources
 - Old Testament
